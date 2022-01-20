@@ -1,0 +1,131 @@
+ST(1)                         General Commands Manual                        ST(1)
+
+NAME
+       st - simple terminal (Modified version of Luke Smith (https://lukesmith.xyz)'s build)
+
+SYNOPSIS
+       st  [-aiv] [-c class] [-f font] [-g geometry] [-n name] [-o iofile] [-T ti‐
+       tle] [-t title] [-l line] [-w windowid] [[-e] command [arguments...]]
+
+       st [-aiv] [-c class] [-f font] [-g geometry] [-n name] [-o iofile] [-T  ti‐
+       tle] [-t title] [-w windowid] -l line [stty_args...]
+
+DESCRIPTION
+       st is a simple terminal emulator.
+
+OPTIONS
+       -a     disable alternate screens in terminal
+
+       -c class
+              defines the window class (default $TERM).
+
+       -f font
+              defines the font to use when st is run.
+
+       -g geometry
+              defines     the     X11    geometry    string.     The    form    is
+              [=][<cols>{xX}<rows>][{+-}<xoffset>{+-}<yoffset>]. See  XParseGeome‐
+              try(3) for further details.
+
+       -i     will fixate the position given with the -g option.
+
+       -n name
+              defines the window instance name (default $TERM).
+
+       -o iofile
+              writes all the I/O to iofile.  This feature is useful when recording
+              st sessions. A value of "-" means standard output.
+
+       -T title
+              defines the window title (default 'st').
+
+       -t title
+              defines the window title (default 'st').
+
+       -w windowid
+              embeds st within the window identified by windowid
+
+       -l line
+              use a tty line instead of a  pseudo  terminal.   line  should  be  a
+              (pseudo-)serial device (e.g. /dev/ttyS0 on Linux for serial port 0).
+              When this flag is given remaining arguments are used  as  flags  for
+              stty(1).   By  default  st initializes the serial line to 8 bits, no
+              parity, 1 stop bit and a 38400 baud rate. The speed is  set  by  ap‐
+              pending  it as last argument (e.g. 'st -l /dev/ttyS0 115200'). Argu‐
+              ments before the last one are stty(1) flags. If you want to set  odd
+              parity  on 115200 baud use for example 'st -l /dev/ttyS0 parenb par‐
+              odd 115200'. Set the number of bits by  using  for  example  'st  -l
+              /dev/ttyS0 cs7 115200'. See stty(1) for more arguments and cases.
+
+       -v     prints version information to stderr, then exits.
+
+       -e command [ arguments ... ]
+              st  executes  command instead of the shell.  If this is used it must
+              be the last option on the command line, as in xterm  /  rxvt.   This
+              option is only intended for compatibility, and all the remaining ar‐
+              guments are used as a command even without it.
+
+SHORTCUTS
+       Alt-j/k or Alt-Up/Down or Alt-Mouse Wheel
+              Scroll up/down one line at a time.
+
+       Alt-u/d or Alt-Page Up/Page Down
+              Scroll up/down one screen at a time.
+
+       Alt-Shift-k/j or Alt-Shift-Page Up/Page Down or Alt-Shift-Mouse Wheel
+              Increase or decrease font size.
+
+       Alt-Home
+              Reset to default font size.
+
+       Shift-Insert or Alt-v
+              Paste from clipboard.
+
+       Alt-c  Copy to clipboard.
+
+       Alt-p  Paste/input primary selection.
+
+       Alt-l  Show dmenu menu of all URLs on screen and choose one to open.
+
+       Alt-y  Show dmenu menu of all URLs on screen and choose one to copy.
+
+       Alt-o  Show dmenu menu of all recently run commands and copy the output  of
+              the chosen command to the clipboard.  xclip required.
+
+       Alt-a/s
+              Increase  or  decrease opacity/alpha value (make window more or less
+              transparent).
+
+       Break  Send a break in the serial line.  Break key is obtained in  PC  key‐
+              boards pressing at the same time control and pause.
+
+       Ctrl-Print Screen
+              Toggle if st should print to the iofile.
+
+       Shift-Print Screen
+              Print the full screen to the iofile.
+
+       Print Screen
+              Print the selection to the iofile.
+
+       Alt-Ctrl
+              Launch dmenu to enter a unicode codepoint and send the corresponding
+              glyph to st.
+
+CUSTOMIZATION
+       st can be customized by creating a custom config.h  and  (re)compiling  the
+       source code. This keeps it fast, secure and simple.
+
+AUTHORS
+       See the LICENSE file for the authors.
+
+LICENSE
+       See the LICENSE file for the terms of redistribution.
+
+SEE ALSO
+       tabbed(1), utmp(1), stty(1)
+
+BUGS
+       See the TODO file in the distribution.
+
+                                     st-0.8.2                                ST(1)

@@ -1,72 +1,49 @@
 # Owen's build of st - the simple (suckless) terminal
 
-The [suckless terminal (st)](https://st.suckless.org/) with some additional features that make it literally the best terminal emulator ever:
+# keybindings:
 
-## Unique features (using dmenu)
+ - Alt-j/k or Alt-Up/Down or Alt-Mouse Wheel
+      Scroll up/down one line at a time.
 
-+ **follow urls** by pressing `alt-l`
-+ **copy urls** in the same way with `alt-y`
-+ **copy the output of commands** with `alt-o`
+ - Alt-u/d or Alt-Page Up/Page Down
+      Scroll up/down one screen at a time.
 
-## Bindings for
+ - Alt-Shift-k/j or Alt-Shift-Page Up/Page Down or Alt-Shift-Mouse Wheel
+      Increase or decrease font size.
 
-+ **scrollback** with `alt-↑/↓` or `alt-pageup/down` or `shift` while scrolling the mouse
-+ OR **vim-bindings**: scroll up/down in history with `alt-k` and `alt-j`. Faster with `alt-u`/`alt-d`.
-+ **zoom/change font size**: same bindings as above, but holding down shift as well. `alt-home` returns to default
-+ **copy text** with `alt-c`, **paste** is `alt-v` or `shift-insert`
+ - Alt-Home
+      Reset to default font size.
 
-## Pretty stuff
+ - Shift-Insert or Alt-v
+      Paste from clipboard.
 
-+ Compatibility with `Xresources` and `pywal` for dynamic colors.
-+ Default [gruvbox](https://github.com/morhetz/gruvbox) colors otherwise.
-+ Transparency/alpha, which is also adjustable from your `Xresources`.
-+ Default font is system "mono" at 14pt, meaning the font will match your system font.
+ - Alt-c  Copy to clipboard.
 
-## Other st patches
+ - Alt-p  Paste/input primary selection.
 
-+ Vertcenter
-+ Scrollback
-+ font2
-+ updated to latest version 0.8.2
+ - Alt-l  Show dmenu menu of all URLs on screen and choose one to open.
 
-## Installation
+ - Alt-y  Show dmenu menu of all URLs on screen and choose one to copy.
 
+ - Alt-o  Show dmenu menu of all recently run commands and copy the output  of
+      the chosen command to the clipboard.  xclip required.
 
+ - Alt-a/s
+      Increase  or  decrease opacity/alpha value (make window more or less
+      transparent).
 
-Obviously, `make` is required to build. `fontconfig` is required for the default build, since it asks `fontconfig` for your system monospace font.  It might be obvious, but `libX11` and `libXft` are required as well. Chances are, you have all of this installed already.
+ - Break  Send a break in the serial line.  Break key is obtained in  PC  key‐
+      boards pressing at the same time control and pause.
 
-On OpenBSD, be sure to edit `config.mk` first and remove `-lrt` from the `$LIBS` before compiling.
+ - Ctrl-Print Screen
+      Toggle if st should print to the iofile.
 
-Be sure to have a composite manager (`xcompmgr`, `picom`, etc.) running if you want transparency.
+ - Shift-Print Screen
+      Print the full screen to the iofile.
 
-## How to configure dynamically with Xresources
+ - Print Screen
+      Print the selection to the iofile.
 
-For many key variables, this build of `st` will look for X settings set in either `~/.Xdefaults` or `~/.Xresources`. You must run `xrdb` on one of these files to load the settings.
-
-For example, you can define your desired fonts, transparency or colors:
-
-```
-*.font:	Liberation Mono:pixelsize=12:antialias=true:autohint=true;
-*.alpha: 0.9
-*.color0: #111
-...
-```
-
-The `alpha` value (for transparency) goes from `0` (transparent) to `1` (opaque).
-
-### Colors
-
-To be clear about the color settings:
-
-- This build will use gruvbox colors by default and as a fallback.
-- If there are Xresources colors defined, those will take priority.
-- But if `wal` has run in your session, its colors will take priority.
-
-Note that when you run `wal`, it will negate the transparency of existing windows, but new windows will continue with the previously defined transparency.
-
-## Notes on Emojis and Special Characters
-
-If st crashes when viewing emojis, install [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) from the AUR.
-
-Note that some special characters may appear truncated if too wide. You might want to manually set your prefered emoji/special character font to a lower size in the `config.h` file to avoid this. By default, JoyPixels is used at a smaller size than the usual text.
-
+ - Alt-Ctrl
+      Launch dmenu to enter a unicode codepoint and send the corresponding
+      glyph to st.

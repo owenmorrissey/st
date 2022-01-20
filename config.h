@@ -6,11 +6,11 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *fonts[] = {
-    "mono:size=13:antialias=true:autohint=true",
+    "mono:size=12:antialias=true:autohint=true",
     "Source Code Pro:size=12:antialias=true:autohint=true"
 };
 static int fonts_current = 0;
-static char *font2[] = { "JoyPixels:pixelsize=10:antialias=true:autohint=true" };
+static char *font2[] = { "Font Awesome 5 Free:pixelsize=12:antialias=true:autohint=true" };
 static int borderpx = 2;
 
 /*
@@ -112,7 +112,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.92;
+float alpha = 0.9;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
